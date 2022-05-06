@@ -1,0 +1,169 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include<math.h>
+using namespace std;
+    string Final;
+    
+string returnValue(int b){
+int temp=0;
+    if(b==1){
+        return "I";
+    }
+    if(b==5){
+        return "V";
+    }
+    if(b==10){
+        return "X";
+    }
+    if(b==50){
+        return "L";
+    }
+    if(b==100){
+        return "C";
+    }
+    if(b==500){
+        return "D";
+    }
+    if(b==1000){
+        return "M";
+    }
+    return "D";
+};
+void value(int b){
+    int temp=0,parity=0;
+    //
+    if(b==0){
+        return;
+    }
+    // if(u==1){
+    //             break;
+    //         }
+    // }
+    //
+    if(b==1){
+        Final+="I";
+        return;
+    }
+    if(b==5){
+        Final+="V";
+        return;
+    }
+    if(b==10){
+        Final+="X";
+        return;
+    }
+    if(b==50){
+        Final+="L";
+        return;
+    }
+    if(b==100){
+        Final+="C";
+        return;
+    }
+    if(b==500){
+        Final+="D";
+        return;
+    }
+    if(b==1000){
+        Final+="M";
+        return;
+    }
+    //
+    // logic:
+    int P[]={1000,500,100,50,10,5,1};
+    for(int i=0;i<7;i++){
+        for(int j=0;j<7;j++){
+            int T;
+            if(P[i]==P[j]){
+                T=3;
+            }
+            else{
+                T=4;
+            }
+            for(int k=1;k<T;k++){
+                if(b==P[i]+k*P[j]){
+                    parity=1;
+                    Final+=returnValue(P[i]);
+                    //cout<<k;
+                    // cout<<returnValue(P[i])<<" ";
+                    // temp=k;
+                    while(temp<k){
+                        temp++;
+                        // cout<<returnValue(P[j])<<" ";
+                    Final+=returnValue(P[j]);
+                    }
+                    return;
+                    temp=0;
+                    break;
+                    // goto logic;
+                }
+            }
+            if(parity==1){
+                break;
+                // return;
+            }
+        }
+        if(parity==1){
+            parity=0;
+            break;
+        }
+    }
+    
+    int u=0;
+    //test for substraction
+    for(int i=0;i<7;i++){
+        for(int j=0;j<7;j++){
+            if(P[i]-P[j]==b){
+                Final+=returnValue(P[j]);
+                Final+=returnValue(P[i]);
+                // goto fresh;
+                return;
+                u=1;
+                break;
+            }
+        }
+    }  
+    //code not yet confirmed
+// }
+    //
+}
+int main()
+{
+    int x,n=0,y;
+    cin>>x;
+    y=x;
+    //for counting length
+    while(x!=0){
+        n++;
+        x=x/10;
+    }
+    int a[n-1];
+    //for array length
+    int b=0,c=0;
+    while(y!=0){
+        int temp=y%10;
+        temp=temp*pow(10,c);
+        a[n-b-1]=temp;
+        b++;
+        c++;
+        // n++;
+        y=y/10;
+    }
+    // for(int i=0;i<n;i++){
+    // cout<<a[i]<<" ";
+    // }
+    
+    for(int i=0;i<n;i++){
+        value(a[i]);
+        // fresh:
+    }
+cout<<Final;
+    return 0;
+}
