@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node {
+    int data;
+    struct node *next;
+};
+struct node *push(struct node *head,int y){
+        struct node*ptr=(struct node*)malloc(sizeof(head));
+    if(head==NULL){
+        ptr->data=y;
+        ptr->next=NULL;
+        head=ptr;
+        return head;
+    }
+    else{
+        ptr->data=y;
+        ptr->next=head;
+        head=ptr;
+        return head;
+    }
+    
+};
+void show(struct node * head){
+    struct node *ptr=head;
+    printf("The stack elements are :\n");
+    while(ptr!=NULL){
+        printf("%d \t",ptr->data);
+        ptr=ptr->next;
+        
+    }
+};
+struct node * pop(struct node *head){
+    if(head==NULL){
+        printf("\n List is empty.");
+        return;
+    }
+    else{
+        int z=head->data;
+        struct node *ptr=head;
+        head=head->next;
+        free(ptr);
+        printf("The number poped out is %d \n",z);
+        return head;
+    }
+}
+int main()
+{
+    struct node *head=NULL;
+    int x;
+        printf("Enter which operation you want to perform\n");
+        printf("1 for push operation\n");
+        printf("2 for pop operation\n");
+        printf("3 for list all elements in stack\n");
+        printf("4 for exit.\n");
+    do{
+        scanf("%d",&x);
+            int y;
+        switch(x){
+            case 1:
+            printf("Enter number to push\n");
+            scanf("%d",&y);
+            head=push(head,y);
+            break;
+            case 2:
+            head= pop(head);
+             break;
+            case 3:
+            show(head);
+            break;
+            case 4:
+            exit(1);
+        }
+    }while(1);
+    // printf("Hello World");
+
+    return 0;
+}
