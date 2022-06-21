@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+void Bs(int a[],int length,int target){
+    int low=0;
+    int pivot;
+    int high=length-1;
+    while(low<=high){
+        int mid=(low+high)/2;
+        // if(a[mid]==target){
+            // cout<<mid;
+        // }
+        if(a[mid]>a[mid-1]){
+            // cout<<"the pivot index is"<<mid;
+            // return;
+            pivot=mid;
+            break;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+    if(a[pivot]==target){
+        cout<<"The index is "<<pivot;
+        return;
+    }
+    if(a[pivot]>target && target>=a[0]){
+        high=pivot;
+        low=0;
+    }
+    else{
+        low=pivot+1;
+        high=length-1;
+    }
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(a[mid]==target){
+            cout<<mid;
+            break;
+        }
+        else if(a[mid]>target){
+            high=mid;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+}
+int main()
+{
+    int a[]={0,1,-1};
+    int length=sizeof(a)/sizeof(a[0]);
+    Bs(a,length,-1);
+    // cout<<length;
+
+    return 0;
+}
