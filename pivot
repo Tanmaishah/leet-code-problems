@@ -1,0 +1,57 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+void Bs(int a[],int length,int target){
+    int low=0;
+    int pivot;
+    int high=length-1;
+    while(low<=high){
+        int mid=(low+high)/2;
+        // if(a[mid]==target){
+            // cout<<mid;
+        // }
+        if(a[mid]>a[mid-1]){
+            cout<<"the pivot index is"<<mid;
+            // return;
+            pivot=mid;
+            break;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+    if(a[piovt]<target){
+        high=pivot;
+        low=0;
+    }
+    if(a[piovt]>target){
+        low=piovt+1;
+        high=length-1;
+    }
+    while{low<=high){
+        mid=(low+high)/2;
+        if(a[mid]==target){
+            cout<<mid;
+        }
+        else if(a[mid]>target){
+            high=
+        }
+    }
+}
+int main()
+{
+    int a[]={4,5,6,0,1,2};
+    int length=sizeof(a)/sizeof(a[0]);
+    Bs(a,length,0);
+    // cout<<length;
+
+    return 0;
+}
